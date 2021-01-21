@@ -1,4 +1,4 @@
-require_relative 'lib/html/snapshot/version'
+require_relative 'lib/html_snapshot/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "html-snapshot"
