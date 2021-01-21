@@ -1,11 +1,7 @@
-source 'http://rubygems.org/'
+source "https://rubygems.org"
 
-gem 'honeybadger'
-gem 'sinatra'
-gem 'puma'
-gem 'terrapin'
+# Specify your gem's dependencies in html-snapshot.gemspec
+gemspec
 
-group :development do
-  gem 'byebug'
-  gem 'minitest'
-end
+gem "rake", "~> 12.0"
+gem "minitest", "~> 5.0"
