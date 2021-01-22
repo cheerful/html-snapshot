@@ -11,7 +11,7 @@ class HTMLSnapshot::SocketClient
 
   self.default_options = {connection_adapter: HTTParty::SocketConnectionAdapter}
 
-  def render(content:)
-    self.class.post('/', body: {content: content}).body
+  def render(content:, window_size:)
+    self.class.post('/', body: {content: content, window_size: window_size}).body
   end
 end

@@ -6,7 +6,7 @@ module HTMLSnapshot
       raise NotImplemented
     end
 
-    def render_gif_of_html(html_content, window_size: "1400,270")
+    def render_gif_of_html(html_content, window_size:)
       identifier = "#{rand(987654321)}#{Time.now.to_i}"
 
       temporary_html_file = create_temporary_html_file(identifier)

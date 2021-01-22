@@ -14,7 +14,8 @@ class HTMLSnapshot::Server < Sinatra::Base
 
   post '/' do
     html_content = params['content']
+    window_size = params['window_size']
     content_type "image/gif"
-    return render_gif_of_html(html_content, window_size: "1400,270")
+    return render_gif_of_html(html_content, window_size: window_size)
   end
 end
