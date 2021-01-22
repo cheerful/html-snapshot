@@ -1,4 +1,5 @@
-require_relative 'config/environment'
+require "bundler/setup"
+require 'dotenv/load'
+require 'html_snapshot'
 
-require './app'
-run Sinatra::Application
+run HTMLSnapshot::Server.new(headless_browser_path: ENV.fetch('HEADLESS_BROWSER_PATH'))
