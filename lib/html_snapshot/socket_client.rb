@@ -1,5 +1,5 @@
 require 'httparty'
-require_relative 'socket_connection_adapter'
+require_relative 'socket_client/socket_connection_adapter'
 
 class HTMLSnapshot::SocketClient
   include HTTParty
@@ -10,7 +10,7 @@ class HTMLSnapshot::SocketClient
     @socket_path = socket_path
   end
 
-  self.default_options = {connection_adapter: HTTParty::SocketConnectionAdapter, socket_path: socket_path}
+  self.default_options = {connection_adapter: HTTParty::SocketConnectionAdapter}
 
   def render(content:)
     self.class.post('/', body: {content: content}).body
