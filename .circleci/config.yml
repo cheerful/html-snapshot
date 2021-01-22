@@ -19,3 +19,13 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+
+      # Cache Dependencies
+      - save_cache:
+          name: Store bundle cache
+          key: bundler-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      # Run the tests
+      - run: bundle exec rake test
