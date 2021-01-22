@@ -48,7 +48,7 @@ module HTMLSnapshot
     end
 
     def temporary_filename(identifier)
-      "email-charts-server-#{identifier}"
+      "html-snapshot-server-#{identifier}"
     end
   end
 end
