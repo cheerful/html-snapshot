@@ -33,10 +33,13 @@ module HTMLSnapshot
         local_html_path: temporary_html_file.path
       }
 
+      temporary_gif_file.close
+      temporary_gif_file.unlink
       line.run(command_options)
 
       logger.debug(command_error_output: line.command_error_output, command_output: line.command_output)
 
+      temporary_gif_file.open
       temporary_gif_file.rewind
       gif_content = temporary_gif_file.read
 
