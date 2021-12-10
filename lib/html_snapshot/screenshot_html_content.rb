@@ -55,12 +55,20 @@ module HTMLSnapshot
 
     protected
 
+    def tempfile_basedir
+      if ENV["HTML_SNAPSHOT_TEMPFILES_DIR"]
+        return ENV["HTML_SNAPSHOT_TEMPFILES_DIR"]
+      else
+        return Dir.tmpdir
+      end
+    end
+
     def create_temporary_html_file(identifier)
-      Tempfile.new([temporary_filename(identifier), '.html'])
+      Tempfile.new([temporary_filename(identifier), '.html'], tempfile_basedir)
     end
 
     def create_temporary_gif_file(identifier)
-      Tempfile.new([temporary_filename(identifier), '.gif'])
+      Tempfile.new([temporary_filename(identifier), '.gif'], tempfile_basedir)
     end
 
     def temporary_filename(identifier)
