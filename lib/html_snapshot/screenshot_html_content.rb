@@ -17,7 +17,6 @@ module HTMLSnapshot
       temporary_html_file = create_temporary_html_file(identifier)
       temporary_gif_file = create_temporary_gif_file(identifier)
       temporary_gif_file.binmode
-      temporary_gif_file.close
 
       temporary_html_file.write(html_content)
 
@@ -34,6 +33,9 @@ module HTMLSnapshot
         screenshot_path: temporary_gif_file.path,
         local_html_path: temporary_html_file.path
       }
+
+      temporary_gif_file.close
+      temporary_gif_file.unlink
 
       line.run(command_options)
 
