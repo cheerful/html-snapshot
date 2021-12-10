@@ -40,6 +40,7 @@ module HTMLSnapshot
       temporary_gif_file.rewind
       gif_content = temporary_gif_file.read
 
+      logger.debug(temporary_html_file_size: temporary_html_file.size, temporary_gif_file_size: temporary_gif_file.size)
       temporary_html_file.close
       temporary_html_file.unlink
 
