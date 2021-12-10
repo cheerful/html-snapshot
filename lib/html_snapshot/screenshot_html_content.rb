@@ -35,7 +35,7 @@ module HTMLSnapshot
 
       line.run(command_options)
 
-      logger.debug(command: line.command(command_options))
+      logger.debug(command_error_output: line.command_error_output, command_output: line.command_output)
 
       temporary_gif_file.rewind
       gif_content = temporary_gif_file.read
