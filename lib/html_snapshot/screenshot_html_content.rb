@@ -16,8 +16,6 @@ module HTMLSnapshot
 
       temporary_html_file = create_temporary_html_file(identifier)
       temporary_gif_file = create_temporary_gif_file(identifier)
-      temporary_gif_file.binmode
-      temporary_gif_file.close
 
       temporary_html_file.write(html_content)
 
@@ -38,7 +36,7 @@ module HTMLSnapshot
       line.run(command_options)
 
       logger.debug(command_error_output: line.command_error_output, command_output: line.command_output)
-      temporary_gif_file.open
+
       temporary_gif_file.rewind
       gif_content = temporary_gif_file.read
 
