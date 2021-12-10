@@ -16,6 +16,7 @@ module HTMLSnapshot
 
       temporary_html_file = create_temporary_html_file(identifier)
       temporary_gif_file = create_temporary_gif_file(identifier)
+      temporary_gif_file.binmode
 
       temporary_html_file.write(html_content)
 
