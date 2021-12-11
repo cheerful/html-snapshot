@@ -27,6 +27,7 @@ module HTMLSnapshot
       temporary_gif_file = create_temporary_gif_file(identifier)
 
       temporary_html_file.write(html_content)
+      temporary_html_file.close
 
       logger.debug(temporary_html_file: temporary_html_file.path, temporary_gif_file: temporary_gif_file.path)
 
