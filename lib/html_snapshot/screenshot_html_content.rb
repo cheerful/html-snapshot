@@ -32,7 +32,7 @@ module HTMLSnapshot
 
       line = Terrapin::CommandLine.new(
         headless_browser_path,
-        "--window-size=:window_size --disable-gpu --headless --hide-scrollbars --enable-logging --v=1 --screenshot=:screenshot_path :local_html_path",
+        "--window-size=:window_size --disable-gpu --headless --allow-external-pages --hide-scrollbars --enable-logging --v=4 --screenshot=:screenshot_path :local_html_path",
         logger: logger
       )
 
