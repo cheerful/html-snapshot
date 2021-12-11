@@ -7,8 +7,17 @@ module HTMLSnapshot
       raise NotImplemented
     end
 
+    LOGLEVELS = %w[DEBUG INFO WARN ERROR FATAL UNKNOWN].freeze
+
     def logger
-      @logger ||= Logger.new(STDOUT)
+      if @logger.nil?
+        @logger = Logger.new(STDOUT)
+        level ||= LOGLEVELS.index ENV.fetch("LOG_LEVEL","WARN") # default to WARN index: 2
+        level ||= Logger::WARN  # FIX default in case of environment LOG_LEVEL value is present but not correct
+        @logger.level = level
+      end
+
+      return @logger
     end
 
     def render_gif_of_html(html_content, window_size:)
