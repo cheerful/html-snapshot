@@ -1,17 +1,13 @@
-require 'httparty'
-require_relative 'socket_client/socket_connection_adapter'
-
+require 'httpx'
 class HTMLSnapshot::SocketClient
-  include HTTParty
+  attr_reader :socket_path
 
-  def self.socket_path(socket_path = nil)
-    return default_options[:socket_path] unless socket_path
-    default_options[:socket_path] = socket_path
+  def initialize(path:)
+    @socket_path = URI(path).path
   end
 
-  self.default_options = {connection_adapter: HTTParty::SocketConnectionAdapter}
-
   def render(content:, window_size:)
-    self.class.post('/', body: {content: content, window_size: window_size}).body
+    httpx = HTTPX::Session.new(transport: "unix", transport_options: {path: path})
+    httpx.post("http://example.com/", form: {content: content, window_size: window_size})
   end
 end

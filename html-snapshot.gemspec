@@ -29,5 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sinatra"
   spec.add_dependency "puma"
   spec.add_dependency "terrapin"
-  spec.add_dependency "httparty"
+  spec.add_dependency "httpx"
 end
