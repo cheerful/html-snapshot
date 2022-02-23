@@ -7,7 +7,7 @@ class HTMLSnapshot::SocketClient
   end
 
   def render(content:, window_size:)
-    httpx = HTTPX::Session.new(transport: "unix", transport_options: {path: path})
+    httpx = HTTPX::Session.new(transport: "unix", transport_options: {path: socket_path})
     httpx.post("http://example.com/", form: {content: content, window_size: window_size})
   end
 end
